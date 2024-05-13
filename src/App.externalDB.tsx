@@ -84,7 +84,8 @@ function App() {
     if (!map.current) return;
 
     addMarker({ lat, lng }).unwrap().then((marker) => {
-      setMapMarkers(prev => [...prev, { ...marker, obj: L.marker([lat, lng]).addTo(map.current as L.Map) }])
+      const obj = new L.Marker([lat, lng]).addTo(map.current as L.Map);
+      setMapMarkers(prev => [...prev, { ...marker, obj }])
     })
   }
 
